@@ -1,4 +1,4 @@
-package com.edu.hbuas.LandDiscover.control;
+package edu.hbuas.LandDiscover.control;
 
 
 public class Order {
@@ -7,6 +7,9 @@ public class Order {
   private long userId;
   private String fromId;
   private String toId;
+  private String scenery;
+  private String hotel;
+  private String car;
   private long time;
   private String startDate;
   private String endDate;
@@ -47,6 +50,33 @@ public class Order {
 
   public void setToId(String toId) {
     this.toId = toId;
+  }
+
+
+  public String getScenery() {
+    return scenery;
+  }
+
+  public void setScenery(String scenery) {
+    this.scenery = scenery;
+  }
+
+
+  public String getHotel() {
+    return hotel;
+  }
+
+  public void setHotel(String hotel) {
+    this.hotel = hotel;
+  }
+
+
+  public String getCar() {
+    return car;
+  }
+
+  public void setCar(String car) {
+    this.car = car;
   }
 
 

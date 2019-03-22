@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="ch">
 <head>
     <title>汽车租赁</title>
     <meta charset="utf-8">

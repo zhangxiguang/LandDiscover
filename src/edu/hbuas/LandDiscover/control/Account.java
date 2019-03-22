@@ -1,4 +1,4 @@
-package com.edu.hbuas.LandDiscover.control;
+package edu.hbuas.LandDiscover.control;
 
 
 public class Account {
