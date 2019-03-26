@@ -52,6 +52,14 @@
 				<dt>游玩日期</dt>
 				<dd>2018-09-10</dd>
 			</dl>
+            <dl>
+                <dt>宾馆</dt>
+                <dd>XXXX</dd>
+            </dl>
+            <dl>
+                <dt>汽车</dt>
+                <dd>XXX</dd>
+            </dl>
 			<dl class="J_price">
 				<dt>成人</dt>
 				<dd class="box-flex-1 price pd0" id="adult_price_span"><span>￥ <span id="price_d">620</span></span></dd><dd class="box-flex-2"><span class="subadd j_num"><span class="sub" data-type="adults"></span><input id="j_price_d_num" type="number" min="1" max="99" class="text_num" value="1" name="adult_num"><span class="add" data-type="adults"></span></span></dd>
