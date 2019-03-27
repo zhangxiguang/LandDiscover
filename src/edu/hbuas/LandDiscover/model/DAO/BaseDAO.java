@@ -1,4 +1,4 @@
-package edu.hbuas.LandDiscover.control.DAO;
+package edu.hbuas.LandDiscover.model.DAO;
 
 public interface BaseDAO {
     public String url="jdbc:mysql://localhost:3306/mysql";

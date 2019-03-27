@@ -1,4 +1,4 @@
-package edu.hbuas.LandDiscover.control.javaBean;
+package edu.hbuas.LandDiscover.control;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

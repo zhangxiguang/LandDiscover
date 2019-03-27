@@ -1,4 +1,4 @@
-package edu.hbuas.LandDiscover.model;
+package edu.hbuas.LandDiscover.model.javaBean;
 
 
 public class Order {
