@@ -14,20 +14,68 @@
 <link rel="stylesheet" type="text/css" href="css/lxsHeadFoot.css">˚
 <link rel="stylesheet" type="text/css" href="css/order_new.css"/>
 <script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/lxs_index00.js"></script>
 <script src="js/min_com.js"></script>
-	<script src="js/order_xianlu.js"></script>
+<script src="js/order_xianlu.js"></script>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+	<script src="layui/layui.js" charset="utf-8"></script>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function () {
+
+			$(".more").click(function () {
+                $(location).attr('href','订单确认.jsp');
+            });
+
+        });
+	</script>
 
 </head>
 <body>
 
+<c:choose>
 
+	<c:when test="${empty sessionScope.userId}">
+		<script>
+            layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+                //用显示框展示添加结果
+                layer.msg("当前未登录，请返回并登录后再试");
+
+            });
+
+		</script>
+	</c:when>
+	<c:when test="${sessionScope.orderNothing !=null}">
+		<script>
+            layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+                //用显示框展示添加结果
+                layer.msg("${sessionScope.orderNothing}");
+
+            });
+
+		</script>
+	</c:when>
+	<c:when test="${empty sessionScope.allOrderInfo}">
+		<c:redirect url="orderServlet?method=allOrderInfo"></c:redirect>
+	</c:when>
+</c:choose>
 
 
 
 
 <div class="content">
 	<div class="headTop">
-		<a href="javascript:history.go(-1)" class="back"><i class="iconBack"></i></a><span>订单填写</span><a class="more"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
+		<!-- 返回上一页-->
+		<a href="javascript:history.go(-1)" class="back"><i class="iconBack"></i></a>
+		<span>订单填写</span>
+		<!-- 点击跳转到订单确认页面-->
+		<a class="more"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
 	</div>
 </div>
 
@@ -37,12 +85,12 @@
 	<form action="" method="post" name="form_1">
 		
 		<div class="tit">
-			<i></i>填写出游信息
+			<i></i>确认出游信息
 		</div>
 		<div class="txt">
 			<dl>
 				<dt>线路名称</dt>
-				<dd class="line30">怀玉乡红色旅游基地纯玩3晚4日游【景点门票全含】</dd>
+				<dd class="line30">${sessionScope.sc}</dd>
 			</dl>
 			<dl>
 				<dt>线路类型</dt>
@@ -112,7 +160,7 @@
 		<script></script>
 		<div class="txt txt2">
 			<dl>
-				<dt>国庆满减活动</dt>
+				<dt>更多活动，敬请期待</dt>
 				<dd class="box-flex-2"><span class="gq_type"></span></dd>
 			</dl>
 		</div>
@@ -730,5 +778,5 @@ var is_dijie = '0'; /*预定须知弹窗*/
 
  }
 </script>
-		</body>
-		</html>
+</body>
+</html>

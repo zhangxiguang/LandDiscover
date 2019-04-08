@@ -15,6 +15,31 @@ public class Order {
   private String endDate;
   private long humans;
   private double money;
+  private String status;
+
+  public Order() {
+  }
+
+
+  public Order(long orderId, long userId, String fromId, String toId, String scenery, String hotel, String car, long time, String startDate, String endDate, long humans, double money, String status) {
+    this.orderId = orderId;
+    this.userId = userId;
+    this.fromId = fromId;
+    this.toId = toId;
+    this.scenery = scenery;
+    this.hotel = hotel;
+    this.car = car;
+    this.time = time;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.humans = humans;
+    this.money = money;
+    this.status = status;
+  }
+
+  public Order(String scenery) {
+    this.scenery = scenery;
+  }
 
 
   public long getOrderId() {
@@ -122,6 +147,15 @@ public class Order {
 
   public void setMoney(double money) {
     this.money = money;
+  }
+
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 }

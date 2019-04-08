@@ -11,6 +11,18 @@ public class Account {
   private String sex;
   private String address;
 
+  public Account() {
+  }
+
+  public Account(long userId, String username, String password, String nickname, long phone, String sex, String address) {
+    this.userId = userId;
+    this.username = username;
+    this.password = password;
+    this.nickname = nickname;
+    this.phone = phone;
+    this.sex = sex;
+    this.address = address;
+  }
 
   public long getUserId() {
     return userId;

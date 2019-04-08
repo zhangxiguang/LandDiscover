@@ -1,35 +1,35 @@
 ﻿@media screen and (min-width:0){
-  html{font-size:53.33%}  
+  html{font-size:53.33%}
 }
 @media screen and (min-width:320px){
-  html{font-size:53.33%}  
+  html{font-size:53.33%}
 }
 @media screen and (min-width:340px){
   html{font-size:56.66%}
 }
 @media screen and (min-width:360px){
-  html{font-size:60%} 
+  html{font-size:60%}
 }
 @media screen and (min-width:380px){
-  html{font-size:63.33%}  
+  html{font-size:63.33%}
 }
 @media screen and (min-width:400px){
-  html{font-size:66.66%}  
+  html{font-size:66.66%}
 }
 @media screen and (min-width:420px){
-  html{font-size:70%} 
+  html{font-size:70%}
 }
 @media screen and (min-width:440px){
-  html{font-size:73.33%}  
+  html{font-size:73.33%}
 }
 @media screen and (min-width:460px){
-  html{font-size:76.66%}  
+  html{font-size:76.66%}
 }
 @media screen and (min-width:480px){
-  html{font-size:80%} 
+  html{font-size:80%}
 }
 @media screen and (min-width:640px){
-  html{font-size:62.5%} 
+  html{font-size:62.5%}
 }
 html{ padding-bottom:0;}
 .layui-m-layermain,.layui-m-layermain div{ font-size:1.5rem; }
