@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zxg
@@ -40,17 +39,17 @@
     <script src="layui/layui.js" charset="utf-8"></script>
 
 
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
 </head>
 <body>
-<%--<jsp:include page="top.jsp"></jsp:include>--%>
+<jsp:include page="top.jsp"></jsp:include>
 <%--<!-- 网页内容-->--%>
 
 
-<%--<jsp:include page="buttom.jsp"></jsp:include>--%>
+
 
 
 <c:choose>
@@ -117,11 +116,13 @@
 
 </c:choose>
 
+<div style="width: 200px;height: 200px;position: relative;top: 200px;z-index: 1">
+    <form action="orderServlet?method=addCar" method="post">
+        用户名:<input type="text" name="Car"><br/>
+        <input type="submit" value="提交">
+    </form>
+</div>
 
-<form action="orderServlet?method=addCar" method="post">
-    用户名:<input type="text" name="Car"><br/>
-    <input type="submit" value="提交">
-</form>
 
 
 
@@ -132,6 +133,8 @@
 
 
 <!-- loader -->
+<jsp:include page="buttom.jsp"></jsp:include>
+
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>

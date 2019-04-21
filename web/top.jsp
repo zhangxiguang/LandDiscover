@@ -23,7 +23,7 @@
                 <li class="nav-item"><a href="car.jsp" class="nav-link">汽车租赁</a></li>
                 <li class="nav-item"><a href="blog.jsp" class="nav-link">博客</a></li>
                 <li class="nav-item"><a href="contact.jsp" class="nav-link">联系我们</a></li>
-                <li class="nav-item"><a href="订单填写.jsp" class="nav-link">购物车</a></li>
+                <li class="nav-item"><a href="orderWrite.jsp" class="nav-link">购物车</a></li>
             </ul>
         </div>
     </div>

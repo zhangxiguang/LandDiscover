@@ -209,10 +209,22 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 Order order=new Order();
+                order.setOrderId(rs.getInt("orderId"));
+                order.setUserId(rs.getInt("userId"));
+                order.setFromId(rs.getString("fromId"));
+                order.setToId(rs.getString("toID"));
+                order.setStartDate(rs.getString("startTime"));
+                order.setEndDate(rs.getString("endTime"));
+                order.setTime(rs.getInt("time"));
                 order.setScenery(rs.getString("scenery"));
                 order.setHotel(rs.getString("hotel"));
                 order.setCar(rs.getString("car"));
+                order.setHumans(rs.getInt("human"));
+                order.setMoney(rs.getInt("price"));
+                order.setStatus(rs.getString("ordStatus"));
                 //更多信息需要添加
+
+                System.out.println(order);
 
                 return order;
 
@@ -229,5 +241,23 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
 
 
 
+    }
+
+    @Override
+    public Boolean addHuman(String orderID, String username, String telephone) {
+        System.out.println("进行添加联系人操作");
+        String sql="insert into orderOwner(ordID,username,telephone) values("+orderID+",'"+username+"',"+telephone+")";
+        Statement sta=getSta();
+        try {
+            int  rs=sta.executeUpdate(sql);
+            if (rs==1){
+
+                return  true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  false;
+        }
+        return null;
     }
 }

@@ -52,6 +52,10 @@ public class orderServlet extends HttpServlet {
                 allOrderInfo(request, response);
                 break;
             }
+            case "orderOwner": {
+                orderOwner(request, response);
+                break;
+            }
 
 
         }
@@ -211,9 +215,14 @@ public class orderServlet extends HttpServlet {
 
     }
 
+    //所有订单信息
     public void allOrderInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("utf-8");
+
+
+        //假设用户登录账户为：
+        request.getSession().setAttribute("userId", "222");
 
 
         // 获取当前用户id
@@ -229,15 +238,56 @@ public class orderServlet extends HttpServlet {
         order = orderDAO.allOrderInfo(account);
         if (order != null) {
             request.getSession().setAttribute("allOrderInfo",order);
-            response.sendRedirect(response.encodeURL("订单填写.jsp"));
+            //计算所有消费
+            //假设景点、宾馆、汽车消费
+            request.getSession().setAttribute("sceneryPrice",400);
+            request.getSession().setAttribute("hotelPrice",300);
+            request.getSession().setAttribute("carPrice",200);
+
+            int Money=0;
+            Order order1=new Order();
+            order1=(Order)request.getSession().getAttribute("allOrderInfo");
+            int humna=(int)order1.getHumans();
+
+            int sceneryPrice= (int)request.getSession().getAttribute("sceneryPrice");
+            int hotelPrice= (int)request.getSession().getAttribute("hotelPrice");
+            int carPrice= (int)request.getSession().getAttribute("carPrice");
+
+            Money=sceneryPrice*humna+hotelPrice+carPrice;
+            request.getSession().setAttribute("allMoney",Money);
+
+            response.sendRedirect(response.encodeURL("orderWrite.jsp"));
 
         }else {
             //用户尚未添加信息
             request.getSession().setAttribute("orderNothing","当前尚未添加信息，快去逛逛吧～");
-            response.sendRedirect(response.encodeURL("订单填写.jsp"));
+            response.sendRedirect(response.encodeURL("orderWrite.jsp"));
         }
     }
 
+    //每个订单所属联系人
+    public void orderOwner(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("utf-8");
+
+
+        String orderId=request.getParameter("orderID_ord");
+        String username=request.getParameter("username_ord");
+        String usertelephone=request.getParameter("usertelephone");
+
+        System.out.println("添加联系人:"+orderId);
+        System.out.println("添加联系人:"+username);
+        System.out.println("添加联系人:"+usertelephone);
+
+        Boolean result=orderDAO.addHuman(orderId,username,usertelephone);
+        if (result){
+            System.out.println("添加成功，跳转到所有订单页");
+
+        }
+
+
+
+    }
 
 
 }

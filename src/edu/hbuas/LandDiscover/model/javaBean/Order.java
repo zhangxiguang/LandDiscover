@@ -37,6 +37,25 @@ public class Order {
     this.status = status;
   }
 
+  @Override
+  public String toString() {
+    return "Order{" +
+            "orderId=" + orderId +
+            ", userId=" + userId +
+            ", fromId='" + fromId + '\'' +
+            ", toId='" + toId + '\'' +
+            ", scenery='" + scenery + '\'' +
+            ", hotel='" + hotel + '\'' +
+            ", car='" + car + '\'' +
+            ", time=" + time +
+            ", startDate='" + startDate + '\'' +
+            ", endDate='" + endDate + '\'' +
+            ", humans=" + humans +
+            ", money=" + money +
+            ", status='" + status + '\'' +
+            '}';
+  }
+
   public Order(String scenery) {
     this.scenery = scenery;
   }

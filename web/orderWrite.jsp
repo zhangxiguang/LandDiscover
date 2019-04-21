@@ -25,8 +25,8 @@
 	<script>
 		$(document).ready(function () {
 
-			$(".more").click(function () {
-                $(location).attr('href','订单确认.jsp');
+			$("#allOrderInfo").click(function () {
+                $(location).attr('href','allOrderInfo.jsp');
             });
 
         });
@@ -73,9 +73,9 @@
 	<div class="headTop">
 		<!-- 返回上一页-->
 		<a href="javascript:history.go(-1)" class="back"><i class="iconBack"></i></a>
-		<span>订单填写</span>
+		<span>订单填写</span><input id="orderId_ord" type="hidden" value="${sessionScope.allOrderInfo.orderId}">
 		<!-- 点击跳转到订单确认页面-->
-		<a class="more"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
+		<a class="more" id="allOrderInfo"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
 	</div>
 </div>
 
@@ -90,32 +90,46 @@
 		<div class="txt">
 			<dl>
 				<dt>线路名称</dt>
-				<dd class="line30">${sessionScope.sc}</dd>
+				<dd class="line30">${sessionScope.allOrderInfo.scenery}</dd>
 			</dl>
 			<dl>
 				<dt>线路类型</dt>
-				<dd class="line30">跟团游</dd>
+				<dd class="line30">私人定制游</dd>
 			</dl>
 			<dl>
-				<dt>游玩日期</dt>
-				<dd>2018-09-10</dd>
+				<dt>始发地</dt>
+				<dd>${sessionScope.allOrderInfo.fromId}</dd>
 			</dl>
-            <dl>
+			<dl>
+				<dt>目的地</dt>
+				<dd>${sessionScope.allOrderInfo.toId}</dd>
+			</dl>
+			<dl>
                 <dt>宾馆</dt>
-                <dd>XXXX</dd>
+                <dd>${sessionScope.allOrderInfo.hotel}</dd>
             </dl>
             <dl>
                 <dt>汽车</dt>
-                <dd>XXX</dd>
+                <dd>${sessionScope.allOrderInfo.car}</dd>
             </dl>
-			<dl class="J_price">
-				<dt>成人</dt>
-				<dd class="box-flex-1 price pd0" id="adult_price_span"><span>￥ <span id="price_d">620</span></span></dd><dd class="box-flex-2"><span class="subadd j_num"><span class="sub" data-type="adults"></span><input id="j_price_d_num" type="number" min="1" max="99" class="text_num" value="1" name="adult_num"><span class="add" data-type="adults"></span></span></dd>
+			<dl>
+				<dt>出发日期</dt>
+				<dd>${sessionScope.allOrderInfo.startDate}</dd>
 			</dl>
-			<dl class="J_price">
-				<dt>儿童</dt>
-				<dd class="box-flex-1 price pd0" id="adult_price_span"><span>￥ <span id="price_child_d">0</span></span></dd><dd class="box-flex-2"><span class="subadd j_num"><span class="sub" data-type="adults"></span><input id="j_price_child_d_num" type="number" min="0" max="99" class="text_num" value="0" name="child_num"><span class="add" data-type="adults"></span></span></dd>
+			<dl>
+				<dt>结束日期</dt>
+				<dd>${sessionScope.allOrderInfo.endDate}</dd>
 			</dl>
+			<dl>
+				<dt>游玩时常</dt>
+				<dd>${sessionScope.allOrderInfo.time}</dd>
+			</dl>
+			<dl>
+				<dt>出行人数</dt>
+				<%--<dd>${sessionScope.allOrderInfo.human}</dd>--%>
+			</dl>
+
+
 		</div>
 		<div class="tit">
 			<i></i>保险信息<br>
@@ -131,11 +145,11 @@
 		<div class="txt">
 			<dl>
 				<dt>联系人</dt>
-				<dd><input maxlength="20" type="text" name="truename" class="o_man" placeholder="真实姓名（必填）" value=""></dd>
+				<dd><input id="userName_ord" maxlength="20" type="text" name="truename" class="o_man" placeholder="真实姓名（必填）" value=""></dd>
 			</dl>
 			<dl>
 				<dt>手机号码</dt>
-				<dd class="pd0"><input type="tel" name="mobiletel" id="n_mobiletel" class="o_number" maxlength="11" placeholder="手机号码（必填）" value=""></dd><dd style="width:8rem;-webkit-box-flex:inherit">
+				<dd class="pd0"><input id="userTelephone" type="tel" name="mobiletel" id="n_mobiletel" class="o_number" maxlength="11" placeholder="手机号码（必填）" value=""></dd><dd style="width:8rem;-webkit-box-flex:inherit">
 				<p>
 					<span class="mobile_code">获取验证码</span>
 				</p>
@@ -187,10 +201,10 @@
 		<dl>
 			<dt>
 			<div class="price">
-				订单总额 <span>￥<em class="j_all_money">620</em></span>
+				订单总额 <span>￥<em class="j_all_money">${sessionScope.allMoney}</em></span>
 			</div>
 			</dt>
-			<dd class="sbmFix"><button type="button" id="save">提交订单</button></dd>
+			<dd class="sbmFix"><button type="button" id="saveall">提交订单</button></dd>
 		</dl>
 	</div>
 </div>
@@ -207,7 +221,7 @@
 			</dd>
 			<dt><i class="checkbox on J_baoxian_one"><input class="j_baoxian_check J_default" type="checkbox" data-name1="finance_safe[]" data-name2="finance_price[]" data-price="25.00" data-id="ff633ad8736f60f0b50faf90394dae1623deb9ea6c" data-title="众安趣神州（计划一）" data-daynum=""></i></dt>
 		</dl>
-		<div class="more_con">
+		<div class="more_con" id="baoxianInfo">
 			<div class="con">
 				<b>保险详情</b>
 				<table>
@@ -466,7 +480,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="more j_down_more">
+			<div class="more j_down_more" id="showBaoxian">
 				<i></i>
 			</div>
 		</div>
@@ -769,14 +783,34 @@ var is_dijie = '0'; /*预定须知弹窗*/
  		placeholder = mark + '号码（必填）';
  		cur.closest('dl').next('dl').find('dt').html(mark).siblings('dd').find('input[type="text"]').attr('placeholder', placeholder);
  	});
- 	$("#save").click(function () {
-		window.location.href="订单确认.jsp";
+
+
+ 	$("#saveall").click(function () {
+ 	    alert("test")
+ 	    var orderId=$("#orderId_ord").val();
+ 	    var username=$("#userName_ord").val();
+ 	    var usertelephone=$("#userTelephone").val();
+ 	    console.log(orderId,username,usertelephone)
+
+ 	    $.get("/orderServlet?method=orderOwner&orderID_ord="+orderId+"&username_ord="+username+"&usertelephone="+usertelephone,function () {
+            window.location.href="allOrderInfo.jsp";
+        })
+
     })
  });
 
  function guoqing_yh() {
 
  }
+</script>
+<script>
+	$(document).ready(function(){
+	   $("#showBaoxian").click(function(){
+	       $("#contentWrapper").show();
+
+	   })
+	});
+
 </script>
 </body>
 </html>

@@ -351,56 +351,56 @@ function kehu_list(){
     }
 }
 
-/*总金额统计*/
-function order_all_money(){
-	var man_m=parseInt($('#j_price_d_num').val());//成人数量
-	var child_m=parseInt($('#j_price_child_d_num').val());//儿童数量
-	
-	!man_m&&(man_m=0);
-	!child_m&&(child_m=0);
-	
-	var chengren=$('#price_d').text()*man_m;//成人总价
-	var child=$('#price_child_d').text()*child_m;//儿童总价
-	var baoxian_day=$('#baoxian_day').val();//保险天数
-	
-	var jf=parseInt($('#j_user_point').val());if(!jf)jf=0;//积分抵用金额
-    var coupon_id = $('input[name=coupon_id]').val();
-    if (coupon_id) {
-	    var yh=parseInt($('.j_di').html());//优惠券抵用金额
-    }else{
-        var yh = 0;
-    }
-	// console.log($('.j_di').html(),yh);
-	
-	var bx=0;//保险单价
-	$('.j_baoxian_price').each(function(index, element) {
-		bx+=Number($(this).attr('data-p'));
-	});
-	if(!bx)bx=0;
-	var bx_all=bx*(man_m+child_m);//保险总金额
-	
-	if(yh){
-		var man=parseInt($('.coupon_price').text());//优惠券满多少
-		if((chengren+child)<man)yh=0;
-	}
-	else yh=0;
-	
-	var error_type=false;
-	
-	var all_money1=Number(chengren)*100+Number(child)*100+Number(bx_all)*100;
-	all_money = all_money1/100;
-	if(all_money>=jf)all_money-=jf;
-	else error_type='积分金额大于等于总金额，无法使用';
-	
-	if(all_money>=yh){
-		all_money= (Number(all_money)*100 - Number(yh)*100)/100;
-	}else if(error_type===false){
-		error_type='抵用券金额大于等于总金额，无法使用';
-	}
-	$('.j_all_money').html(all_money);
-	guoqing_yh();
-	return error_type;
-}
+// /*总金额统计*/
+// function order_all_money(){
+// 	var man_m=parseInt($('#j_price_d_num').val());//成人数量
+// 	var child_m=parseInt($('#j_price_child_d_num').val());//儿童数量
+//
+// 	!man_m&&(man_m=0);
+// 	!child_m&&(child_m=0);
+//
+// 	var chengren=$('#price_d').text()*man_m;//成人总价
+// 	var child=$('#price_child_d').text()*child_m;//儿童总价
+// 	var baoxian_day=$('#baoxian_day').val();//保险天数
+//
+// 	var jf=parseInt($('#j_user_point').val());if(!jf)jf=0;//积分抵用金额
+//     var coupon_id = $('input[name=coupon_id]').val();
+//     if (coupon_id) {
+// 	    var yh=parseInt($('.j_di').html());//优惠券抵用金额
+//     }else{
+//         var yh = 0;
+//     }
+// 	// console.log($('.j_di').html(),yh);
+//
+// 	var bx=0;//保险单价
+// 	$('.j_baoxian_price').each(function(index, element) {
+// 		bx+=Number($(this).attr('data-p'));
+// 	});
+// 	if(!bx)bx=0;
+// 	var bx_all=bx*(man_m+child_m);//保险总金额
+//
+// 	if(yh){
+// 		var man=parseInt($('.coupon_price').text());//优惠券满多少
+// 		if((chengren+child)<man)yh=0;
+// 	}
+// 	else yh=0;
+//
+// 	var error_type=false;
+//
+// 	var all_money1=Number(chengren)*100+Number(child)*100+Number(bx_all)*100;
+// 	all_money = all_money1/100;
+// 	if(all_money>=jf)all_money-=jf;
+// 	else error_type='积分金额大于等于总金额，无法使用';
+//
+// 	if(all_money>=yh){
+// 		all_money= (Number(all_money)*100 - Number(yh)*100)/100;
+// 	}else if(error_type===false){
+// 		error_type='抵用券金额大于等于总金额，无法使用';
+// 	}
+// 	$('.j_all_money').html(all_money);
+// 	guoqing_yh();
+// 	return error_type;
+// }
 
 
 
