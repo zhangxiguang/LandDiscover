@@ -14,7 +14,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
     @Override
     public Boolean addScenery(Account account, Order order) {
         Account acc = account;
-        Long userId = acc.getUserId();
+        int userId = acc.getUserId();
         System.out.println("要添加订单信息的userId为："+userId);
         Order ord = order;
         String scenery = ord.getScenery();
@@ -25,7 +25,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
         try {
             String sql = "select * from orderInfo where userId=? and ordStatus = 'noMove' ";
             PreparedStatement pre = getPre(sql);
-            pre.setInt(1,userId.intValue());
+            pre.setInt(1,userId);
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 //获取该用户的订单编号
@@ -47,7 +47,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
             } else {
                 System.out.println("未查询到当前用户的订单信息");
                 //用户没有创建订单，新建用户订单
-                String sql3 = "INSERT into orderInfo (userId,scenery) VALUES("+userId.intValue()+","+scenery+")";
+                String sql3 = "INSERT into orderInfo (userId,scenery) VALUES("+userId+","+scenery+")";
                 Statement sta2=getSta();
                 System.out.println(sta2);
                 int rs3=sta2.executeUpdate(sql3);
@@ -77,7 +77,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
     @Override
     public Boolean addHotel(Account account, Order order) {
         Account acc = account;
-        Long userId = acc.getUserId();
+        int userId = acc.getUserId();
         System.out.println("要添加订单信息的userId为："+userId);
         Order ord = order;
         String hotel = ord.getHotel();
@@ -88,7 +88,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
         try {
             String sql = "select * from orderInfo where userId=? and ordStatus = 'noMove' ";
             PreparedStatement pre = getPre(sql);
-            pre.setInt(1,userId.intValue());
+            pre.setInt(1,userId);
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 //获取该用户的订单编号
@@ -110,7 +110,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
             } else {
                 System.out.println("未查询到当前用户的订单信息");
                 //用户没有创建订单，新建用户订单
-                String sql3 = "INSERT into orderInfo (userId,hotel) VALUES("+userId.intValue()+","+hotel+")";
+                String sql3 = "INSERT into orderInfo (userId,hotel) VALUES("+userId+","+hotel+")";
                 Statement sta2=getSta();
                 System.out.println(sta2);
                 int rs3=sta2.executeUpdate(sql3);
@@ -137,7 +137,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
     @Override
     public Boolean addCar(Account account, Order order) {
         Account acc = account;
-        Long userId = acc.getUserId();
+        int userId = acc.getUserId();
         System.out.println("要添加订单信息的userId为："+userId);
         Order ord = order;
         String car = ord.getCar();
@@ -148,7 +148,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
         try {
             String sql = "select * from orderInfo where userId=? and ordStatus = 'noMove' ";
             PreparedStatement pre = getPre(sql);
-            pre.setInt(1,userId.intValue());
+            pre.setInt(1,userId);
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 //获取该用户的订单编号
@@ -170,7 +170,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
             } else {
                 System.out.println("未查询到当前用户的订单信息");
                 //用户没有创建订单，新建用户订单
-                String sql3 = "INSERT into orderInfo (userId,car) VALUES("+userId.intValue()+","+car+")";
+                String sql3 = "INSERT into orderInfo (userId,car) VALUES("+userId+","+car+")";
                 Statement sta2=getSta();
                 System.out.println(sta2);
                 int rs3=sta2.executeUpdate(sql3);
@@ -197,7 +197,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
     @Override
     public Order allOrderInfo(Account account) {
         Account acc = account;
-        Long userId = acc.getUserId();
+        int userId = acc.getUserId();
         System.out.println("要查询订单信息的userId为："+userId);
 
         //连接数据库，查看用户是否已经生成订单
@@ -205,7 +205,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
         try {
             String sql = "select * from orderInfo where userId=? and ordStatus = 'noMove' ";
             PreparedStatement pre = getPre(sql);
-            pre.setInt(1,userId.intValue());
+            pre.setInt(1,userId);
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 Order order=new Order();
