@@ -1,34 +1,21 @@
 package edu.hbuas.LandDiscover.model.javaBean;
-
-
 public class Account {
 
-  private long userId;
+  private int userId;
   private String username;
   private String password;
   private String nickname;
-  private long phone;
+  private int phone;
   private String sex;
   private String address;
+  private String headimage;
 
-  public Account() {
-  }
 
-  public Account(long userId, String username, String password, String nickname, long phone, String sex, String address) {
-    this.userId = userId;
-    this.username = username;
-    this.password = password;
-    this.nickname = nickname;
-    this.phone = phone;
-    this.sex = sex;
-    this.address = address;
-  }
-
-  public long getUserId() {
+  public int getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(int userId) {
     this.userId = userId;
   }
 
@@ -60,11 +47,11 @@ public class Account {
   }
 
 
-  public long getPhone() {
+  public int getPhone() {
     return phone;
   }
 
-  public void setPhone(long phone) {
+  public void setPhone(int phone) {
     this.phone = phone;
   }
 
@@ -84,6 +71,15 @@ public class Account {
 
   public void setAddress(String address) {
     this.address = address;
+  }
+
+
+  public String getHeadimage() {
+    return headimage;
+  }
+
+  public void setHeadimage(String image) {
+    this.headimage = image;
   }
 
 }

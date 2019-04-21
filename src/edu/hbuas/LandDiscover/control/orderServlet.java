@@ -80,7 +80,7 @@ public class orderServlet extends HttpServlet {
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(Integer.parseInt(userId));
 
                 Boolean result = orderDAO.addScenery(account, order);
                 System.out.println(result);
@@ -132,7 +132,7 @@ public class orderServlet extends HttpServlet {
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(Integer.parseInt(userId));
 
                 Boolean result = orderDAO.addHotel(account, order);
                 System.out.println(result);
@@ -183,7 +183,7 @@ public class orderServlet extends HttpServlet {
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(Integer.parseInt(userId));
 
                 Boolean result = orderDAO.addCar(account, order);
                 System.out.println(result);
@@ -223,7 +223,7 @@ public class orderServlet extends HttpServlet {
 
         //查询数据库
         Account account = new Account();
-        account.setUserId(Long.parseLong(userId));
+        account.setUserId(Integer.parseInt(userId));
 
         Order order = new Order();
         order = orderDAO.allOrderInfo(account);
