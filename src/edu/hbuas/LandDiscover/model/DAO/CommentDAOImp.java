@@ -21,24 +21,43 @@ public class CommentDAOImp extends BaseDAOimp implements CommentDAO {
             pre.setString(2 ,c.getcText());
             pre.setInt(3,c.getBlog().getBlogId());
             pre.setInt(4,c.getUser().getUserId());
-
             result=pre.executeUpdate()>0?true:false;
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return result;
+    }
+    public boolean delComment(int blogUserId,int userId,int cid){
+        ResultSet rs = null;
+        boolean result = false;
+        int num=0;
+        try {
+            rs =getSta().executeQuery("select userId from comment where CId="+cid);
+                if(rs.next()){
+                    num = rs.getInt(1);
+                }
+            System.out.println(num);
+            if(blogUserId==num||userId==num){
+                PreparedStatement pre = getPre("delete from comment where cid=?");
+                pre.setInt(1,cid);
+                result = pre.executeUpdate()>0?true:false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return result;
     }
 
     @Override
-    public int getAllComment(long blogId) {
+    public int getAllComment(int blogId) {
         int result = 0;
         ResultSet rs = null;
         try {
             rs = getSta().executeQuery("select count(Cid)from Comment where blogid="+blogId);
-            rs.next();
-            result = rs.getInt(1);
+            if(rs.next())
+                result = rs.getInt(1);
+            else
+               result=0;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -47,7 +66,7 @@ public class CommentDAOImp extends BaseDAOimp implements CommentDAO {
     }
 
     @Override
-    public List<Comment> getPageComment(int page, int count ,long blogid) {
+    public List<Comment> getPageComment(int page, int count ,int blogid) {
         List<Comment> ct = new ArrayList<>();
         Comment c;
         try {

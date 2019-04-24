@@ -39,7 +39,24 @@ public class commentServlet extends HttpServlet {
             case "getAllComment":
                 getPageComment(request, response);
                  break;
+            case "delComment":
+                delComment(request, response);
+                break;
         }
+    }
+
+    protected void delComment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int blogUserId = ((Blog)request.getSession().getAttribute("blog")).getUser().getUserId();
+        int userId = ((Account)request.getSession().getAttribute("user")).getUserId();
+        int cid = Integer.parseInt(request.getParameter("cid"));
+        boolean result = false;
+             result = commentDAO.delComment(blogUserId,userId,cid);
+            response.setContentType("text/html;charset=utf-8");
+            PrintWriter  out=response.getWriter();
+            out.write(result+"");
+            out.flush();
+            out.close();
+
     }
 
 
@@ -47,15 +64,8 @@ public class commentServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String text = new String(request.getParameter("text").getBytes("iso-8859-1"),"utf-8");
         System.out.println(text);
-        //Blog b = (Blog)request.getSession().getAttribute("blog");
-        //Account acc =(Account) request.getSession().getAttribute("user");
-        Account acc = new Account();
-        acc.setUserId(2);
-        acc.setNickname("啊啊啊");
-        acc.setHeadimage("images/+.png");
-
-        Blog b = new Blog();
-        b.setBlogId(1);
+        Blog b = (Blog)request.getSession().getAttribute("blog");
+        Account acc =(Account) request.getSession().getAttribute("user");
         Comment c = new Comment();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         c.setcTime(df.format(new Date()));
@@ -64,21 +74,17 @@ public class commentServlet extends HttpServlet {
         c.setUser(acc);
         boolean result = commentDAO.addComment(c);
         request.getRequestDispatcher("blog-single.jsp").forward(request, response);
-
     }
-    protected void getPageComment(HttpServletRequest request, HttpServletResponse response){
+    protected void getPageComment(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String page =request.getParameter("page");
         String count=request.getParameter("count");
         String thispage = request.getParameter("thispage");
-        //Blog b = (Blog)request.getSession().getAttribute("blog");
+        Blog b = (Blog)request.getSession().getAttribute("blog") ;
         //Account acc =(Account) request.getSession().getAttribute("user");
         Account acc = new Account();
         acc.setUserId(1);
         acc.setNickname("123");
         acc.setHeadimage("images/+.png");
-        Blog b = new Blog();
-        b.setBlogId(1);
-
 
         commentPage p = new commentPage();
         p.setAllcount(commentDAO.getAllComment(b.getBlogId()));
@@ -87,11 +93,9 @@ public class commentServlet extends HttpServlet {
         p.setLaterpage(p.getThispage()==p.getAllpage()?p.getAllpage():p.getThispage()+1);
         p.setFrontpage(p.getThispage()==p.getFristpage()?p.getFristpage():p.getThispage()-1);
         p.setEverypagecount(Integer.parseInt(count));
-        if(Integer.parseInt(thispage)<p.getAllpage()){
+        if(Integer.parseInt(thispage)<=p.getAllpage()){
             try{
-
                 List<Comment> c =  commentDAO.getPageComment(Integer.parseInt(page),Integer.parseInt(count),b.getBlogId());
-                System.out.println(c);
                 List all = new ArrayList();
                 all.add(c);
                 all.add(p);

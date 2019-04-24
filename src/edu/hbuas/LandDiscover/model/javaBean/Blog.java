@@ -8,8 +8,39 @@ public class Blog {
   private String blogtext;
   private String blogimg;
   private String blogtag;
-  private int userid;
+  private Account user;
+  private String blogtime;
+  private int commentnum;
 
+  @Override
+  public String toString() {
+    return "Blog{" +
+            "blogId=" + blogId +
+            ", blogtitle='" + blogtitle + '\'' +
+            ", blogtext='" + blogtext + '\'' +
+            ", blogimg='" + blogimg + '\'' +
+            ", blogtag='" + blogtag + '\'' +
+            ", user=" + user +
+            ", blogtime='" + blogtime + '\'' +
+            ", commentnum=" + commentnum +
+            '}';
+  }
+
+  public int getCommentnum() {
+    return commentnum;
+  }
+
+  public void setCommentnum(int commentnum) {
+    this.commentnum = commentnum;
+  }
+
+  public String getBlogtime() {
+    return blogtime;
+  }
+
+  public void setBlogtime(String blogtime) {
+    this.blogtime = blogtime;
+  }
 
   public int getBlogId() {
     return blogId;
@@ -56,12 +87,12 @@ public class Blog {
   }
 
 
-  public int getUserid() {
-    return userid;
+  public Account getUser() {
+    return user;
   }
 
-  public void setUserid(int userid) {
-    this.userid = userid;
+  public void setUser(Account user) {
+    this.user = user;
   }
 
 }
