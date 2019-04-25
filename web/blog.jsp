@@ -30,6 +30,31 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+      <style>
+          #btn{
+              padding: 5px 10px;
+              background: #00b0f0;
+              color: #FFF;
+              border: none;
+              border-radius: 5px;
+          }
+          label{
+              position: relative;
+          }
+          #fileinp{
+              position: absolute;
+              left: 0;
+              top: 0;
+              opacity: 0;
+          }
+          #btn{
+              margin-right: 5px;
+          }
+          #text{
+              color: red;
+          }
+      </style>
   </head>
   <body>
     
@@ -42,7 +67,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
               <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="login.jsp">首页</a></span> <span>博客</span></p>
-              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">建议 &amp; 文章</h1>
+              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span id="writeBlog"><b  href="javascript:void(0)">写文章</b></span> &amp; <span id="readBlog"><a  href="javascript:void(0)">读文章</a></span> </h1>
             </div>
           </div>
         </div>
@@ -50,7 +75,7 @@
 
       <section class="ftco-section bg-light">
         <div class="container">
-          <div id="show" class="row d-flex">
+          <div id="show" class="row d-flex" >
 
             <%--<div class="col-md-4 d-flex ftco-animate">--%>
               <%--<div class="blog-entry align-self-stretch">--%>

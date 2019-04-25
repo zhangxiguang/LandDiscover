@@ -6,6 +6,41 @@ $(document).ready(function () {
     $(function () {
         setPage(1)
     })
+    $("#readBlog").click(function () {
+        $("#writeBlog").html("<b  href='javascript:void(0)'>写文章</b>")
+        $("#readBlog").html("<a  href='javascript:void(0)'>读文章</a>")
+        setPage(thisP);
+    })
+    
+    $("#writeBlog").click(function () {
+        $("#writeBlog").html("<a  href='javascript:void(0)'>写文章</a>")
+        $("#readBlog").html("<b  href='javascript:void(0)'>读文章</b>")
+        $("#show").html("<form action='blogServlet?method=addBlog'  method='post' enctype='multipart/form-data'  class='p-5 bg-light' style='position: relative; left: 400px;'>\n" +
+            "                            <h3 class='mb-5'>发表文章</h3>\n" +
+            "                            <div class='form-group'>\n" +
+            "                                <img id='showImg' src=''><br>\n" +
+            "                                <label for='fileinp'>\n" +
+            "                                    <input type='button' id='btn' value='上传首页图'><span id='text'></span>\n" +
+            "                                    <input type='file'  name='bg' value='' id='fileinp'style='display: inline' >\n" +
+            "                                </label>\n" +
+            "                                <br>\n" +
+            "                                <label for='name'>标题</label>\n" +
+            "                                <input type='text' class='form-control' id='name' name='title'>\n" +
+            "                            </div>\n" +
+            "                            <div class='form-group'>\n" +
+            "                                <label for='name'>类型</label>\n" +
+            "                                <input type='text' class='form-control' id='tag' name='tag'>\n" +
+            "                            </div>\n" +
+            "                            <div class='form-group'>\n" +
+            "                                <label for='message'>正文</label>\n" +
+            "                                <textarea name='text' id='message' cols='30' rows='10' class='form-control'></textarea>\n" +
+            "                            </div>\n" +
+            "                            <div class='form-group'>\n" +
+            "                                <input type='submit' value='提交' class='btn py-3 px-4 btn-primary'>\n" +
+            "                            </div>\n" +
+            "                        </form>")
+        $("#choosepage").html("");
+    })
 
 
     function setPage(page) {
@@ -58,6 +93,16 @@ $(document).ready(function () {
     $("#blog").click(function () {
         thisP = 1
         setPage(1)
+    })
+
+    $("body").on('change',"#fileinp",function () {
+        var $file = $(this)
+        var objUrl = $file[0].files[0];
+        var windowURL = window.URL||window.webkitURL
+        var dataURL
+        dataURL = windowURL.createObjectURL(objUrl)
+        $("#showImg").attr("src",dataURL)
+        $("#showImg").css({"width":100,"height":100})
     })
     
     $("#choosepage").on('click',"#nextpage",function(){

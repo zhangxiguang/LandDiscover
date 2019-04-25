@@ -4,6 +4,7 @@ import edu.hbuas.LandDiscover.model.javaBean.Account;
 import edu.hbuas.LandDiscover.model.javaBean.Blog;
 import sun.security.krb5.internal.crypto.RsaMd5CksumType;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +126,20 @@ public class BlogDAOImp extends BaseDAOimp implements BlogDAO {
 
     @Override
     public boolean addBlog(Blog b) {
-        return false;
+        boolean result =false;
+        try {
+            PreparedStatement pre = getPre("insert into blog (blogtime,blogtext,userid,blogtitle,blogtag,blogimg) values (?,?,?,?,?,?)");
+            pre.setString(1,b.getBlogtime());
+            pre.setString(2,b.getBlogtext());
+            pre.setInt(3,b.getUser().getUserId());
+            pre.setString(4,b.getBlogtitle());
+            pre.setString(5,b.getBlogtag());
+            pre.setString(6,b.getBlogimg());
+            result = pre.executeUpdate()>0?true:false;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

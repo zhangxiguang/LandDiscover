@@ -9,16 +9,19 @@ import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
+@MultipartConfig
 @WebServlet(name = "blogServlet" , urlPatterns = "/blogServlet")
 public class blogServlet extends HttpServlet {
     private BlogDAO blogDAO;
@@ -29,7 +32,7 @@ public class blogServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String method = request.getParameter("method");
         switch (method){
-            case "addComment":
+            case "addBlog":
                 addBlog(request, response);
                 break;
             case "getAllComment":
@@ -95,8 +98,56 @@ public class blogServlet extends HttpServlet {
         respWritter.append(data.toString());
     }
 
-    protected void addBlog(HttpServletRequest request, HttpServletResponse response){
+    protected void addBlog(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String title =new String(request.getParameter("title").getBytes("iso-8859-1"),"utf-8");
+        String tag =new String(request.getParameter("tag").getBytes("iso-8859-1"),"utf-8");
+        String text =new String(request.getParameter("text").getBytes("iso-8859-1"),"utf-8");
+        System.out.println(title);//文件类型
+        Part part = request.getPart("bg");
 
+
+        String uuidName = UUID.randomUUID().toString();
+        StringBuffer childpath = new StringBuffer();
+        for (int n = 0; n < uuidName.length(); n++) {
+            childpath.append(uuidName.charAt(n) );
+        }
+        String rootpath = request.getRealPath("upload") + "/" + childpath;
+        File path = new File(rootpath);
+        path.mkdirs();
+        String newFileName = uuidName + "." + part.getContentType().substring(part.getContentType().indexOf("/") + 1, part.getContentType().length());
+
+        String fullPath = newFileName;
+        FileOutputStream out = new FileOutputStream(rootpath + newFileName);
+
+        InputStream in = part.getInputStream();
+        byte[] bs = new byte[1024];
+        int len = -1;
+        while ((len = in.read(bs)) != -1) {
+
+            out.write(bs, 0, len);
+        }
+        out.flush();
+        out.close();
+        in.close();
+        System.out.println(rootpath+"\n"+fullPath);
+        Account user = (Account)request.getSession().getAttribute("user");
+        Blog b = new Blog();
+        b.setBlogtag(tag);
+        b.setBlogimg("upload/"+childpath+newFileName);
+        b.setBlogtext(text);
+        b.setBlogtitle(title);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式;
+        b.setBlogtime(df.format(new Date()));
+        b.setUser(user);
+        boolean result = blogDAO.addBlog(b);
+        if(result){
+            request.getRequestDispatcher("blog.jsp").forward(request,response);
+        }else {
+            response.setCharacterEncoding("utf-8");
+            request.setAttribute("errorMessage","发表失败");
+            request.getRequestDispatcher("write-blog.jsp").forward(request,response);
+        }
+        System.out.println(result);
     }
 
     protected void chooseBlog(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
