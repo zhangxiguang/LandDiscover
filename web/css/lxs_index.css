@@ -930,7 +930,6 @@ header,.top_adv,.banner,.content {
 .indProLi a img {
 	width: 120px;
 	height: 80px;
-	-webkit-box-flex: 120px;
 	border-radius: 5px;
 }
 
@@ -1271,7 +1270,6 @@ header,.top_adv,.banner,.content {
 .topIconTxt {
 	padding: 0 17px;
 	padding-bottom: 0;
-	line-height:
 }
 
 .topIconTxt em {
