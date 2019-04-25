@@ -3,25 +3,27 @@ package edu.hbuas.LandDiscover.model.javaBean;
 
 public class Order {
 
-  private long orderId;
-  private long userId;
+  private int orderId;
+  private int userId;
   private String fromId;
   private String toId;
   private String scenery;
   private String hotel;
   private String car;
-  private long time;
+  private String time;
   private String startDate;
   private String endDate;
-  private long humans;
+  private int humans;
   private double money;
   private String status;
+
+
 
   public Order() {
   }
 
 
-  public Order(long orderId, long userId, String fromId, String toId, String scenery, String hotel, String car, long time, String startDate, String endDate, long humans, double money, String status) {
+  public Order(int orderId, int userId, String fromId, String toId, String scenery, String hotel, String car, String time, String startDate, String endDate, int humans, double money, String status) {
     this.orderId = orderId;
     this.userId = userId;
     this.fromId = fromId;
@@ -42,20 +44,20 @@ public class Order {
   }
 
 
-  public long getOrderId() {
+  public int getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(long orderId) {
+  public void setOrderId(int orderId) {
     this.orderId = orderId;
   }
 
 
-  public long getUserId() {
+  public int getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(int userId) {
     this.userId = userId;
   }
 
@@ -105,11 +107,11 @@ public class Order {
   }
 
 
-  public long getTime() {
+  public String getTime() {
     return time;
   }
 
-  public void setTime(long time) {
+  public void setTime(String time) {
     this.time = time;
   }
 
@@ -132,11 +134,11 @@ public class Order {
   }
 
 
-  public long getHumans() {
+  public int getHumans() {
     return humans;
   }
 
-  public void setHumans(long humans) {
+  public void setHumans(int humans) {
     this.humans = humans;
   }
 

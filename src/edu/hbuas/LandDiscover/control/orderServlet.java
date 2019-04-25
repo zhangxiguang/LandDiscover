@@ -76,11 +76,11 @@ public class orderServlet extends HttpServlet {
         if (session != null) {
             //当前用户已登陆
             if (session.getAttribute("userId") != null) {
-                String userId = (String) session.getAttribute("userId");
+                int userId = (int) session.getAttribute("userId");
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(userId);
 
                 Boolean result = orderDAO.addScenery(account, order);
                 System.out.println(result);
@@ -128,11 +128,11 @@ public class orderServlet extends HttpServlet {
         if (session != null) {
             //当前用户已登陆
             if (session.getAttribute("userId") != null) {
-                String userId = (String) session.getAttribute("userId");
+                int userId = (int) session.getAttribute("userId");
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(userId);
 
                 Boolean result = orderDAO.addHotel(account, order);
                 System.out.println(result);
@@ -179,11 +179,11 @@ public class orderServlet extends HttpServlet {
         if (session != null) {
             //当前用户已登陆
             if (session.getAttribute("userId") != null) {
-                String userId = (String) session.getAttribute("userId");
+                int userId = (int) session.getAttribute("userId");
                 System.out.println("用户id为：" + userId);
 
                 Account account = new Account();
-                account.setUserId(Long.parseLong(userId));
+                account.setUserId(userId);
 
                 Boolean result = orderDAO.addCar(account, order);
                 System.out.println(result);
@@ -218,12 +218,12 @@ public class orderServlet extends HttpServlet {
 
         // 获取当前用户id
         HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("userId");
+        int userId = (int) session.getAttribute("userId");
         System.out.println("用户id为：" + userId);
 
         //查询数据库
         Account account = new Account();
-        account.setUserId(Long.parseLong(userId));
+        account.setUserId(userId);
 
         Order order = new Order();
         order = orderDAO.allOrderInfo(account);
