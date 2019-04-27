@@ -104,9 +104,9 @@
         <form class="form-horizontal">
             <fieldset disabled>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">线路名称</label>
+                    <label for="inputEmail1" class="col-sm-2 control-label">线路名称</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail1"
                                placeholder="${sessionScope.allOrderInfo.scenery}">
                     </div>
                 </div>
@@ -119,9 +119,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">始发地</label>
+                    <label for="inputEmail2" class="col-sm-2 control-label">始发地</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail2"
                                placeholder="${sessionScope.allOrderInfo.fromId}">
                     </div>
                 </div>
@@ -137,45 +137,45 @@
 
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">宾馆</label>
+                    <label for="inputEmail4" class="col-sm-2 control-label">宾馆</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail4"
                                placeholder="${sessionScope.allOrderInfo.hotel}">
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">汽车</label>
+                    <label for="inputEmail5" class="col-sm-2 control-label">汽车</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail5"
                                placeholder="${sessionScope.allOrderInfo.car}">
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">出发日期</label>
+                    <label for="inputEmail6" class="col-sm-2 control-label">出发日期</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail6"
                                placeholder="${sessionScope.allOrderInfo.startDate}">
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">结束日期</label>
+                    <label for="inputEmail7" class="col-sm-2 control-label">结束日期</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail7"
                                placeholder="${sessionScope.allOrderInfo.endDate}">
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">游玩时常</label>
+                    <label for="inputEmail8" class="col-sm-2 control-label">游玩时常</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3"
+                        <input type="text" class="form-control" id="inputEmail8"
                                placeholder="${sessionScope.allOrderInfo.time}">
                     </div>
                 </div>
