@@ -3,4 +3,72 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <filter>
+        <filter-name>SessionChekerFilter</filter-name>
+        <filter-class>edu.hbuas.LandDiscover.control.filter.SessionCheckerFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/blog.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/blog-single.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/car-single.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/hotel-single.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/place-single.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/changeInformation.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/changePassword.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/hotel.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/neworder.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/orderWrite.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/places.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/profile.jsp</url-pattern>
+    </filter-mapping>
+
+
+
+
+    <listener>
+        <listener-class>edu.hbuas.LandDiscover.control.filter.SessionCheckerFilter</listener-class>
+    </listener>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+
+
 </web-app>
