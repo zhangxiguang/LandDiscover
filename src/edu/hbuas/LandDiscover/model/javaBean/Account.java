@@ -7,7 +7,7 @@ public class Account {
   private String username;
   private String password;
   private String nickname;
-  private long phone;
+  private String phone;
   private String sex;
   private String address;
   private String image;
@@ -15,7 +15,7 @@ public class Account {
   public Account() {
   }
 
-  public Account(int userId, String username, String password, String nickname, long phone, String sex, String address) {
+  public Account(int userId, String username, String password, String nickname, String phone, String sex, String address) {
     this.userId = userId;
     this.username = username;
     this.password = password;
@@ -61,11 +61,11 @@ public class Account {
   }
 
 
-  public long getPhone() {
+  public String getPhone() {
     return phone;
   }
 
-  public void setPhone(long phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
   }
 

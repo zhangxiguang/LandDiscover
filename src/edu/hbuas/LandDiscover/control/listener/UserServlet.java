@@ -250,10 +250,10 @@ public class UserServlet extends HttpServlet implements Serializable{
      * @throws IOException
      */
     protected void changeInformation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nickname = new String(request.getParameter("nickName").getBytes("iso-8859-1"), "utf-8");
+        String nickname = request.getParameter("nickName");
         String phone = request.getParameter("phone");
         String sex = request.getParameter("sex");
-        String address = new String(request.getParameter("address").getBytes("iso-8859-1"), "utf-8");
+        String address =request.getParameter("address");
         String image = request.getParameter("image");
         Account user = (Account) request.getSession().getAttribute("user");
 

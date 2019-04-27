@@ -59,7 +59,7 @@ $(document).ready(function() {
                         $.each(obj,function (k,ob) {
                             $("#comment").append("<li  class='comment "+ob.cId+"'>\n" +
                                 "                  <div class='vcard bio'>\n" +
-                                "                    <img src='"+ob.user.headimage+"' alt='Image placeholder'>\n" +
+                                "                    <img src='"+ob.user.image+"' alt='Image placeholder'>\n" +
                                 "                  </div>\n" +
                                 "                  <div class='comment-body'>\n" +
                                 "                    <h3>"+ob.user.nickname+"</h3>\n" +

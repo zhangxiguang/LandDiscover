@@ -64,18 +64,18 @@
 
 <c:choose>
 
-    <c:when test="${empty sessionScope.userId}">
-        <script>
-            layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句
-                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+    <%--<c:when test="${empty sessionScope.userId}">--%>
+        <%--<script>--%>
+            <%--layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句--%>
+                <%--var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句--%>
 
-                //用显示框展示添加结果
-                layer.msg("当前未登录，请返回并登录后再试");
+                <%--//用显示框展示添加结果--%>
+                <%--layer.msg("当前未登录，请返回并登录后再试");--%>
 
-            });
+            <%--});--%>
 
-        </script>
-    </c:when>
+        <%--</script>--%>
+    <%--</c:when>--%>
     <c:when test="${sessionScope.orderNothing !=null}">
         <script>
             layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句
@@ -333,13 +333,13 @@
             var number=$("select option:checked").text();
             var moneyss=$("#allMONEY").text();
 
-            alert(number,moneyss)
+            // alert(number,moneyss)
 
             if(username.length!=0&&usertelephone.length!=0){
 
 
                 $.get("/orderServlet?method=orderOwner&orderID_ord="+orderId+"&username_ord="+username+"&usertelephone="+usertelephone+"&number="+number+"&moneyS="+moneyss,function () {
-                    window.location.href="allOrderInfo.jsp";
+                    window.location.href="neworder.jsp";
                 })
 
             }else {

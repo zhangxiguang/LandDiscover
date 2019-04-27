@@ -205,7 +205,7 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
 
         try {
             //String sql = "select * from orderInfo where userId=? and ordStatus = 'noMove' ";
-            String sql="SELECT * FROM orderInfo o,Car c,hotel h,places p where userId=? and ordStatus = 'noMove' and o.scenery=p.id and o.car =c.carid and o.hotel=h.hotelid ";
+            String sql="SELECT * FROM orderInfo o,Car c,hotel h,places p where userId=? and ordStatus = '0' and o.scenery=p.id and o.car =c.carid and o.hotel=h.hotelid ";
             PreparedStatement pre = getPre(sql);
             pre.setInt(1,userId);
             ResultSet rs = pre.executeQuery();
@@ -217,11 +217,11 @@ public class OrderDAOimp extends BaseDAOimp implements OrderDAO {
                 order.setToId(rs.getString("toID"));
                 order.setStartDate(rs.getString("startTime"));
                 order.setEndDate(rs.getString("endTime"));
-                order.setTime(rs.getInt("time"));
+                order.setTime(rs.getString("time"));
 
-                order.setScenery(rs.getString("scenery"));
-                order.setHotel(rs.getString("hotel"));
-                order.setCar(rs.getString("car"));
+                order.setScenery(rs.getString("name"));
+                order.setHotel(rs.getString("hotelname"));
+                order.setCar(rs.getString("carName"));
 
                 order.setStatus(rs.getString("ordStatus"));
 

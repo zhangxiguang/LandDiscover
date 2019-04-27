@@ -153,15 +153,15 @@ public class blogServlet extends HttpServlet {
     }
 
     protected void chooseBlog(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       //Account user = (Account) request.getSession().getAttribute("user");
+       Account user = (Account) request.getSession().getAttribute("user");
         String blogid = request.getParameter("blogid");
-        Account user =new Account();
-        user.setUserId(2);
+//        Account user =new Account();
+//        user.setUserId(2);
 
         Blog b = blogDAO.getBlog(Integer.parseInt(blogid));
 
         request.getSession().setAttribute("blog",b);
-        request.getSession().setAttribute("user",user);
+//        request.getSession().setAttribute("user",user);
         request.getRequestDispatcher("blog-single.jsp").forward(request,response);
     }
 
