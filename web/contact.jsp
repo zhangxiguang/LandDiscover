@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <jsp:include page="top.jsp"></jsp:include>
+  <jsp:include page="top.jsp"></jsp:include>
     <!-- END nav -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">

@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <<html lang="ch">
   <head>
-    <title>Adventure - Free Bootstrap 4 Template by Colorlib</title>
+    <title>文章</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -27,19 +30,44 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+      <style>
+          #btn{
+              padding: 5px 10px;
+              background: #00b0f0;
+              color: #FFF;
+              border: none;
+              border-radius: 5px;
+          }
+          label{
+              position: relative;
+          }
+          #fileinp{
+              position: absolute;
+              left: 0;
+              top: 0;
+              opacity: 0;
+          }
+          #btn{
+              margin-right: 5px;
+          }
+          #text{
+              color: red;
+          }
+      </style>
   </head>
   <body>
-    
-	  <jsp:include page="top.jsp"></jsp:include>
+
+  <jsp:include page="top.jsp"></jsp:include>
     <!-- END nav -->
 
-      <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+      <div class="hero-wrap js-fullheight" style="background-image: url('../images/bg_1.jpg');">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="login.jsp">首页</a></span> <span>博客</span></p>
-              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">建议 &amp; 文章</h1>
+              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="../login.jsp">首页</a></span> <span>博客</span></p>
+              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span id="writeBlog"><b  href="javascript:void(0)">写文章</b></span> &amp; <span id="readBlog"><a  href="javascript:void(0)">读文章</a></span> </h1>
             </div>
           </div>
         </div>
@@ -47,110 +75,35 @@
 
       <section class="ftco-section bg-light">
         <div class="container">
-          <div class="row d-flex">
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">建议, Travel</span>
-                  <h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">Culture</span>
-                  <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">建议, Travel</span>
-                  <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">建议, Travel</span>
-                  <h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_5.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">Culture</span>
-                  <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-                <a href="blog-single.html" class="block-20" style="background-image: url('images/image_6.jpg');">
-                </a>
-                <div class="text">
-                  <span class="tag">建议, Travel</span>
-                  <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta mb-3">
-                    <div><a href="#">October 3, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div id="show" class="row d-flex" >
+
+            <%--<div class="col-md-4 d-flex ftco-animate">--%>
+              <%--<div class="blog-entry align-self-stretch">--%>
+                <%--<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">--%>
+                <%--</a>--%>
+                <%--<div class="text">--%>
+                  <%--<span class="tag">建议, Travel</span>--%>
+                  <%--<h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>--%>
+                  <%--<div class="meta mb-3">--%>
+                    <%--<div><a href="#">October 3, 2018</a></div>--%>
+                    <%--<div><a href="#">Admin</a></div>--%>
+                    <%--<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>--%>
+                  <%--</div>--%>
+                <%--</div>--%>
+              <%--</div>--%>
+            <%--</div>--%>
+
+
+
           </div>
+
           <div class="row mt-5">
             <div class="col text-center">
               <div class="block-27">
-                <ul>
-                  <li><a href="#">&lt;</a></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&gt;</a></li>
+
+                <ul id="choosepage">
                 </ul>
+
               </div>
             </div>
           </div>
@@ -178,11 +131,13 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-
+  <script src="js/blog.js"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+      <script type="text/javascript" src="Ueditor/ueditor.config.js"></script>
+      <script type="text/javascript" src="Ueditor/ueditor.all.js"></script>
+
     
   </body>
 </html>
