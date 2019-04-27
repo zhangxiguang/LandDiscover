@@ -61,7 +61,7 @@
                 <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
                      aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
-                       aria-controls="v-pills-1" aria-selected="true">行程</a>
+                       aria-controls="v-pills-1" aria-selected="true">地点</a>
 
                     <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
                        aria-controls="v-pills-2" aria-selected="false">宾馆</a>
@@ -73,60 +73,59 @@
             <div class="col-md-12 tab-wrap">
 
                 <div class="tab-content p-4 px-5" id="v-pills-tabContent">
-
                     <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                          aria-labelledby="v-pills-nextgen-tab">
-                        <form action="#" class="search-destination">
+                        <form action="placeServlet?method=search&page=1&count=6" method="post" class="search-destination">
                             <div class="row">
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
-                                        <label for="#">出发地</label>
+                                        <label for="from">出发地</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="icon-my_location"></span></div>
-                                            <input type="text" class="form-control" placeholder="From">
+                                            <input type="text" class="form-control" placeholder="From" id="from" name="from">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
-                                        <label for="#">目的地</label>
+                                        <label for="to">目的地</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="icon-map-marker"></span></div>
-                                            <input type="text" class="form-control" placeholder="Where">
+                                            <input type="text" class="form-control" placeholder="Where" id="to" name="to">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
-                                        <label for="#">开始</label>
+                                        <label for="start_time">开始</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="icon-map-marker"></span></div>
-                                            <input type="text" class="form-control checkin_date" placeholder="Check In">
+                                            <input type="text" class="form-control checkin_date" placeholder="Check In" id="start_time" name="start_time">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
-                                        <label for="#">结束</label>
+                                        <label for="end_time">结束</label>
                                         <div class="form-field">
                                             <div class="icon"><span class="icon-map-marker"></span></div>
                                             <input type="text" class="form-control checkout_date"
-                                                   placeholder="Check Out">
+                                                   placeholder="Check Out" id="end_time" name="end_time">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
-                                        <label for="#">旅行时常</label>
+                                        <label for="time">旅行时常</label>
                                         <div class="form-field">
                                             <div class="select-wrap">
                                                 <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
+                                                <select  id="time" class="form-control" name="time">
+                                                    <option>1日</option>
+                                                    <option>2日</option>
+                                                    <option>3日</option>
+                                                    <option>4日</option>
+                                                    <option>5日</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -142,7 +141,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
                         <form action="#" class="search-destination">
                             <div class="row">
