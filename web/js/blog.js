@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#writeBlog").click(function () {
         $("#writeBlog").html("<a  href='javascript:void(0)'>写文章</a>")
         $("#readBlog").html("<b  href='javascript:void(0)'>读文章</b>")
-        $("#show").html("<form action='blogServlet?method=addBlog'  method='post' enctype='multipart/form-data'  class='p-5 bg-light' style='position: relative; left: 400px;'>\n" +
+        $("#show").html("<form id='formm'  action='blogServlet?method=addBlog'  method='post' enctype='multipart/form-data'  class='p-5 bg-light' style='position: relative; left: 100px;'>\n" +
             "                            <h3 class='mb-5'>发表文章</h3>\n" +
             "                            <div class='form-group'>\n" +
             "                                <img id='showImg' src=''><br>\n" +
@@ -30,17 +30,31 @@ $(document).ready(function () {
             "                            <div class='form-group'>\n" +
             "                                <label for='name'>类型</label>\n" +
             "                                <input type='text' class='form-control' id='tag' name='tag'>\n" +
+            "<div style='width: 800px' id='tags' class='tagcloud'></div>\n"+
             "                            </div>\n" +
             "                            <div class='form-group'>\n" +
             "                                <label for='message'>正文</label>\n" +
-            "                                <textarea name='text' id='message' cols='30' rows='10' class='form-control'></textarea>\n" +
+            "                                <textarea id='container' name='container'style='width: 800px; height: 400px; margin: 0 auto;'> </textarea>\n" +
             "                            </div>\n" +
             "                            <div class='form-group'>\n" +
-            "                                <input type='submit' value='提交' class='btn py-3 px-4 btn-primary'>\n" +
+            "                         <button type='button' id='send'  class='btn py-3 px-4 btn-primary'>提交</button>  \n" +
             "                            </div>\n" +
             "                        </form>")
-        $("#choosepage").html("");
+        $("#choosepage").html("")
+        $.ajax({
+            url:"blogServlet?method=getBlogTag",
+            dataType:"JSON",
+            success:function (data) {
+                $.each(data,function (i,obj) {
+                    $("#tags").append("<a class='tag' href='javascript:void(0)' class='tag-cloud-link'>"+obj+"</a>")
+                })
+            }
+        })
+        var ue = UE.getEditor("container");
+
     })
+
+
 
 
     function setPage(page) {
@@ -95,6 +109,10 @@ $(document).ready(function () {
         setPage(1)
     })
 
+    $("body").on('click',".tag",function () {
+        $("#tag").val($(this).text())
+    })
+
     $("body").on('change',"#fileinp",function () {
         var $file = $(this)
         var objUrl = $file[0].files[0];
@@ -103,6 +121,27 @@ $(document).ready(function () {
         dataURL = windowURL.createObjectURL(objUrl)
         $("#showImg").attr("src",dataURL)
         $("#showImg").css({"width":100,"height":100})
+    })
+
+    $("body").on('click',"#send",function () {
+        var path = $("#fileinp").val();
+        var extStart = path.lastIndexOf('.'),
+            ext = path.substring(extStart, path.length).toUpperCase();
+        console.log($("#name").val()+"---"+$("#container").val()+"-------"+$("#tag").val())
+        if($("#name").val()==""||$("#container").html()==""||$("#tag").val()==""){
+            alert("信息不能为空")
+        }else if (path.length == 0){
+            alert("请上传图片!");
+            return false;
+
+        }else if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.GIF'){
+            alert("图片格式不对!");
+            resetFile();
+            return false;
+
+        }else {
+            $(this).prop("type","submit");
+        }
     })
     
     $("#choosepage").on('click',"#nextpage",function(){
@@ -124,3 +163,9 @@ $(document).ready(function () {
     })
 })
 
+function check() {
+    var title = document.getElementById("name").value;
+    if(title==null){
+        return false
+    }
+}

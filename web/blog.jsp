@@ -135,6 +135,9 @@
   <script src="js/blog.js"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+      <script type="text/javascript" src="Ueditor/ueditor.config.js"></script>
+      <script type="text/javascript" src="Ueditor/ueditor.all.js"></script>
+
     
   </body>
 </html>

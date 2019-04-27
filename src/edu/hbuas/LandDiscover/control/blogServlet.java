@@ -72,12 +72,14 @@ public class blogServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String keywords = new String(request.getParameter("keywords").getBytes("iso-8859-1"),"utf-8");
         //String keywords = request.getParameter("keywords");
+        request.getSession().removeAttribute("tag");
         request.getSession().setAttribute("keywords",keywords);
         request.getRequestDispatcher("blog.jsp").forward(request,response);
     }
 
     protected void  getBlogByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tag = request.getParameter("tag");
+        request.getSession().removeAttribute("keywords");
         request.getSession().setAttribute("tag",tag);
         request.getRequestDispatcher("blog.jsp").forward(request,response);
 
@@ -101,7 +103,7 @@ public class blogServlet extends HttpServlet {
     protected void addBlog(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String title =new String(request.getParameter("title").getBytes("iso-8859-1"),"utf-8");
         String tag =new String(request.getParameter("tag").getBytes("iso-8859-1"),"utf-8");
-        String text =new String(request.getParameter("text").getBytes("iso-8859-1"),"utf-8");
+        String text =new String(request.getParameter("container").getBytes("iso-8859-1"),"utf-8");
         System.out.println(title);//文件类型
         Part part = request.getPart("bg");
 
