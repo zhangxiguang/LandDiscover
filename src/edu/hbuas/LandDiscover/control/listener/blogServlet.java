@@ -70,7 +70,7 @@ public class blogServlet extends HttpServlet {
     }
     protected void getBlogByKeywords(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        String keywords = new String(request.getParameter("keywords").getBytes("iso-8859-1"),"utf-8");
+        String keywords = request.getParameter("keywords");
         //String keywords = request.getParameter("keywords");
         request.getSession().removeAttribute("tag");
         request.getSession().setAttribute("keywords",keywords);

@@ -142,14 +142,29 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
-                        <form action="#" class="search-destination">
+                        <form action="hotelServlet?method=search" method="post">
                             <div class="row">
+                                <div class="col-md align-items-end">
+                                    <div class="form-group">
+                                        <label for="#">酒店名</label>
+                                        <div class="form-field">
+                                            <input type="text" class="form-control" name="hotelname" id="hotelname"  placeholder="From">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md align-items-end">
+                                    <div class="form-group">
+                                        <label for="#">所在地</label>
+                                        <div class="form-field">
+                                            <input type="text" name="hotelsite" id="hotelsite" class="form-control" placeholder="Where">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md align-items-end">
                                     <div class="form-group">
                                         <label for="#">开始</label>
                                         <div class="form-field">
-                                            <div class="icon"><span class="icon-map-marker"></span></div>
-                                            <input type="text" class="form-control checkin_date" placeholder="Check In">
+                                            <input type="text" name="hoteldatefrom" id="hoteldatefrom" class="form-control checkin_date" placeholder="Check In">
                                         </div>
                                     </div>
                                 </div>
@@ -157,26 +172,8 @@
                                     <div class="form-group">
                                         <label for="#">结束</label>
                                         <div class="form-field">
-                                            <div class="icon"><span class="icon-map-marker"></span></div>
-                                            <input type="text" class="form-control checkout_date"
+                                            <input type="text" name="hoteldateto" id="hoteldateto" class="form-control checkout_date"
                                                    placeholder="Check Out">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md align-items-end">
-                                    <div class="form-group">
-                                        <label for="#">Guest</label>
-                                        <div class="form-field">
-                                            <div class="select-wrap">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                </select>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
