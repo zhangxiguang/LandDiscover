@@ -10,7 +10,7 @@
     <script src="js/register.js" type="text/javascript"></script>
     <style type="text/css">
         .check{
-            color:#55C9E1;
+            color:#54ff9f;
         }
     </style>
 </head>

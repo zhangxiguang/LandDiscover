@@ -66,7 +66,7 @@
     </script>
     <style type="text/css">
         .check{
-            color: #55C9E1;;
+            color: #55C9E1;
         }
     </style>
 </head>
@@ -75,7 +75,7 @@
 <form  action="changeInformation.jsp" method="post" >
     <div class="lowin">
         <div class="lowin-brand">
-            <img src="images/kodinger.jpg" alt="logo">
+            <img src='${sessionScope.user.image}' id="adv" alt="logo" style="border-radius: 50%;">
         </div>
         <div class="lowin-wrapper">
             <div class="lowin-box lowin-login">
@@ -102,6 +102,9 @@
                     <button  id="send" type="button" class="lowin-btn">
                         提交修改
                     </button>
+                    <div class="text-foot">
+                        Do you want to return the page?<a href="changeInformation.jsp" class="login-link">返回</a>
+                    </div>
                 </div>
             </div>
         </div>

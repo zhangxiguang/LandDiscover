@@ -148,10 +148,10 @@ public class UserServlet extends HttpServlet implements Serializable{
 
         String username = request.getParameter("userName");
         String password = request.getParameter("pwd");
-        String nickname = new String(request.getParameter("nickName").getBytes("iso-8859-1"), "utf-8");
+        String nickname =request.getParameter("nickName");
         String phone = request.getParameter("phone");
         String sex = request.getParameter("sex");
-        String address = new String(request.getParameter("address").getBytes("iso-8859-1"), "utf-8");
+        String address = request.getParameter("address");
         String image = request.getParameter("image");
         System.out.println(image);
         System.out.println(part);

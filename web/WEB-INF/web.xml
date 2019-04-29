@@ -23,6 +23,10 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>SessionChekerFilter</filter-name>
+        <url-pattern>/car.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionChekerFilter</filter-name>
         <url-pattern>/hotel-single.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>

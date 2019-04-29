@@ -58,9 +58,11 @@
                         确认修改
                     </button>
                     <div class="text-foot">
-                        Don't have an account?  <a href="changePassword.jsp" class="login-link">Change Password?</a>
+                        Do you want to change the password?  <a href="changePassword.jsp" class="login-link">Change Password?</a>
                     </div>
-
+                    <div class="text-foot">
+                        Do you want to return the page?<a href="profile.jsp" class="login-link">返回</a>
+                    </div>
                 </div>
             </div>
         </div>
